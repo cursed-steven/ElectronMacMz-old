@@ -14,7 +14,7 @@ const outputPath = process.argv[2] || __dirname + '/dist';
 
 builder.build({
     config: {
-        productName: 'donut-machine-mz-mac',
+        productName: 'electron-mz-mac',
         appId: 'com.electron.${name}',
         copyright: 'Copyright (c) 2020 Gotcha Gotcha Games Inc., 2020 YOJI OJIMA',
         mac: {
