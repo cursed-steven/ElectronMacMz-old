@@ -33,11 +33,11 @@ NW.jsと比べて以下のメリットがあります。
 <https://nodejs.org/ja/download/>
 
 ### Electronのインストール
-package.jsonに記載されたバージョンでよければ `npm -install` でもOKです(※)。  
+package.jsonに記載されたバージョンでよければ `npm install` でもOKです(※)。  
 `npm install -D electron`
 
 ### electron-builderのインストール
-package.jsonに記載されたバージョンでよければ `npm -install` でもOKです(※)。  
+package.jsonに記載されたバージョンでよければ `npm install` でもOKです(※)。  
 `npm install -D electron-builder`
 
 ※オリジナルよりだいぶバージョン上げてます。
@@ -59,7 +59,7 @@ RPGツクールMZ本体にトリアコンタンさんのプラグイン`Electron
 ### テストプレー(開発ツール起動)
 `npm run debug`
 
-## デプロイメント
+### デプロイメント
 デプロイメントします。出力先はデフォルトでは ./dist です。build.js の outputPath で設定可能です。  
 `npm run deploy`
 
