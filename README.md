@@ -16,7 +16,7 @@ NW.jsと比べて以下のメリットがあります。
 - フロント開発用のエディタ（VSCode等）を使ったことがあるひと
 
 ## 動作確認バージョン
-- macOS Ventura 13.2.1
+- macOS Ventura 13.2.1 on MacBook Air (M1, 2020)
 - Node.js v18.16.0
 - npm v9.5.1
 - Electron v24.1.3
