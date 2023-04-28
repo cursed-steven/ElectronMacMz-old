@@ -29,7 +29,7 @@ NW.jsと比べて以下のメリットがあります。
 以後のコマンドはすべてチェックアウトしたディレクトリで行います。
 
 ### Node.jsのダウンロードとインストール
-下記のサイトに従って推奨版をダウンロード、インストールします。
+下記のサイトに従って推奨版(=LTS:Long Time Support)をダウンロード、インストールします。  
 <https://nodejs.org/ja/download/>
 
 ### Electronのインストール
@@ -43,11 +43,11 @@ package.jsonに記載されたバージョンでよければ `npm install` で�
 ※オリジナルよりだいぶバージョン上げてます。
 
 ### RPGツクールMZのプロジェクトをコピー
-チェックアウトしてできたフォルダの下に`project`というフォルダを作り、その配下にRPGツクールMZのプロジェクト(=game.rmmzprojectファイルが入っているフォルダの中身全部)をコピーします。
+チェックアウトしてできたフォルダの下の`project`フォルダの配下に、RPGツクールMZのプロジェクト(=game.rmmzprojectファイルが入っているフォルダの中身全部)をコピーします。
 
 ### プラグインの有効化
-RPGツクールMZ本体にトリアコンタンさんのプラグイン`ElectronForMz.js`を入れて有効化します。  
-<https://github.com/triacontane/ElectronForMz/blob/main/project/js/plugins/ElectronForMz.js>
+RPGツクールMZ本体に本プロジェクトに同梱のプラグイン`CSVN_electronDebugHelper.js`を入れて有効化します。  
+<https://github.com/cursed-steven/ElectronMacMz/blob/main/project/js/plugins/CSVN_electronDebugHelper.js>
 
 ## 実行
 ### 通常起動
@@ -71,13 +71,12 @@ main.js の 以下の場所の width/height を修正してください。ツク
             height: 624,
             useContentSize: true,
             webPreferences: {
-                nodeIntegration: false,
-                preload: 'preload.js',
+                nodeIntegration: true,
+                preload: __dirname + '/preload.js',
                 contextIsolation: true
             },
             icon: 'project/icon/icon.png'
         });
-
 ```
 
 ## 本プロジェクトの詳細解説
@@ -111,8 +110,30 @@ macOS向けにビルドするためのファイルです。
 `target`はデプロイメント方法です。`zip`は文字通りzipファイルを作成します。プラットフォームごとに様々な設定があり、macOS でも pkg とか dmg とかできるようですがまだ試してません。試したら追記します。
 `category`は Apple 側で決められているゲームアプリ用の固定値です。
 
-詳細設定はドキュメントをご参照ください。
+詳細設定はドキュメントをご参照ください。  
 <https://www.electron.build/configuration/configuration>
+
+### 最終的なフォルダ構成
+```
+xxxxxxxx@MacBook-Air ElectronMzMac % ls -l
+total 464
+-rw-r--r--    1 xxxxxxxx  staff    1070  4 28 13:07 LICENSE
+-rw-r--r--    1 xxxxxxxx  staff    1078  4 28 12:37 LICENSE(ElectronForMz)
+-rw-r--r--    1 xxxxxxxx  staff    8058  4 28 12:37 README(ElectronForMz).md
+-rw-r--r--@   1 xxxxxxxx  staff    5515  4 29 00:07 README.md
+-rw-r--r--    1 xxxxxxxx  staff      50  4 28 12:37 ReleaseNote(ElectronForMz).md
+-rw-r--r--    1 xxxxxxxx  staff      50  4 28 13:10 ReleaseNote.md
+-rw-r--r--    1 xxxxxxxx  staff    1161  4 28 13:18 build.js
+drwxr-xr-x   13 xxxxxxxx  staff     416  4 28 22:03 dist
+-rwxr-xr-x    1 xxxxxxxx  staff   22646  4 28 12:52 icon.png
+-rw-r--r--@   1 xxxxxxxx  staff    2178  4 29 00:06 main.js
+drwxr-xr-x  262 xxxxxxxx  staff    8384  4 28 22:03 node_modules
+-rw-r--r--    1 xxxxxxxx  staff  162059  4 28 13:40 package-lock.json
+-rw-r--r--    1 xxxxxxxx  staff     426  4 28 13:08 package.json
+-rw-r--r--    1 xxxxxxxx  staff     847  4 28 20:51 preload.js
+drwxr-xr-x   15 xxxxxxxx  staff     480  4 28 22:03 project
+```
+※distは build 後にできます
 
 ## 参考資料
 <https://qiita.com/triacontane/items/a8610bff9778ca2aaa3e>
