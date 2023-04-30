@@ -206,13 +206,4 @@
             return false;
         }
     };
-    Scene_Boot.prototype.reloadMapIfUpdated = Scene_Load.prototype.reloadMapIfUpdated;
-
-    const _Scene_Load_reloadMapIfUpdated = Scene_Load.prototype.reloadMapIfUpdated;
-    Scene_Load.prototype.reloadMapIfUpdated = function () {
-        _Scene_Load_reloadMapIfUpdated.apply(this, arguments);
-        if ($gameSystem.versionId() !== $dataSystem.versionId) {
-            $gameMap.clearEventErase();
-        }
-    };
 })();
